@@ -1,0 +1,13 @@
+{
+  "name": "Books",
+  "homepage": "https://github.com/chenriq5/books_angular",
+  "authors": [
+    "Prince <prince.vabraham@gmail.com>"
+  ],
+  "description": "",
+  "main": "/public/index.html",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.5.6"
+  }
+}
