@@ -8,6 +8,7 @@
   "main": "/public/index.html",
   "license": "MIT",
   "dependencies": {
-    "angular": "^1.5.6"
+    "angular": "^1.5.6",
+    "semantic": "^2.1.8"
   }
 }
