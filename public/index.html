@@ -62,28 +62,30 @@
                   <tbody>
                     <tr ng-repeat = "novel in items">
                       <div>
-                          <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.book_name}}</td>
+                          <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.bookName}}</td>
                           <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.author}}</td>
                           <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.ISBN}}</td>
-                          <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.num_books}}</td>
-                          <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.pub_date| date: "M/d/yy"}}</td>
-                          <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.book_cat}}</td>
-                          <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.num_books_issued}}</td> 
+                          <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.numBooks}}</td>
+                          <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.pubDate| date: "M/d/yy"}}</td>
+                          <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.bookCat}}</td>
+                          <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.numBooksIssued}}</td> 
                     </div>
                     </tr>
                   </tbody>
                 </table>
                 
                 <!--buttons-->
-                <button type="button" class="btn btn-primary btn-sm" id="myButton" onclick ="myButton()"><span class="glyphicon glyphicon-plus"></span></button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="isFormVisible = true"><span class="glyphicon glyphicon-plus"></span></button>
                 <button type="button" class="btn btn-primary btn-sm" onclick="window.open('addForm.html')"><span class="glyphicon glyphicon-pencil"></span></button>
                 <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-trash"></span></button>
                  
             </div>
         </div>
-        <div class="row-right">
+        <div class="row-right" ng-show="isFormVisible">
             <div class="col-lg-12">
-                <iframe id="showButton" data-src='addForm.html'></iframe>
+                    <div ng-include="'addForm.html'"></div>
+
+<!--                <iframe id="showButton" data-src='addForm.html'></iframe>-->
             </div>    
         </div>
     </div>
