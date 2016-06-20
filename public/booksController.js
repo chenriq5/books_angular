@@ -21,11 +21,18 @@ angular.module('bookstore',[])
         num_books_issued: 5
         
     }];
+    
+     $scope.submit = function(){
+      $scope.items.push($scope.newData);
+      $scope.newDate = '';
+    };
         
        
         $scope.items = products; 
         console.log($scope.items);
     })
+
+   
 
     .controller('tableController',function(){
         this.row =1;
@@ -38,3 +45,9 @@ angular.module('bookstore',[])
            return this.row === rowName;
         }
     });
+
+function myButton(){
+    var iframe = $("#showButton");
+    iframe.attr("src", iframe.data("src"));
+    
+}

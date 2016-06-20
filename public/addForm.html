@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head ng-app="bookstore">
+    <title>Add a book form</title>
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+   
+</head>
+<body ng-controller="booksController">
+    <h1>Add a book</h1>
+    <div ng-controller="MyController" >
+        <form>
+            Book Name:        <input type="text" ng-model="newData.book_name"><br>
+            Author:           <input type="text" ng-model="newData.author"><br>
+            ISBN code:        <input type="text" ng-model="newData.ISBN"><br>
+            # of books:       <input type="text" ng-model="newData.num_books"><br>
+            Publish Date:     <input type="text" ng-model="newData.pub_date"><br>
+            Book Category:    <input type="text" ng-model="newData.book_cat"><br>
+            # of Books Issued:<input type="text" ng-model="newData.num_books_issued"><br>
+        </form>
+        <button class="btn btn-primary btn-sm" ng-click="submit()">Submit</button>
+    
+    </div>
+    
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript"src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+    <script src="booksController.js"></script>
+</body>
+</html>
