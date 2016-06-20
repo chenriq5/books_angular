@@ -1,35 +1,41 @@
 angular.module('bookstore',[])
     .controller('booksController', function($scope){    
-        
+        console.log('control loaded');
+    $scope.isFormVisible= false;
+    
     var products =
     [{        
-        book_name:'The Giver',
+        bookName:'The Giver',
         author: 'Lois Lowry',
         ISBN: 111,
-        num_books: 5,
-        pub_date: 9/2/16,
-        book_cat: 'Fiction',
-        num_books_issued: 4                    
+        numBooks: 5,
+        pubDate: 9/2/16,
+        bookCat: 'Fiction',
+        numBooksIssued: 4                    
     },        
     {
-        book_name: 'Book 2',
+        bookName: 'Book 2',
         author: 'John Doe',
         ISBN: '112',
-        num_books: 10,
-        pub_date: 8/12/96,
-        book_cat: 'biography',
-        num_books_issued: 5
+        numBooks: 10,
+        pubDate: 8/12/96,
+        bookCat: 'biography',
+        numBooksIssued: 5
         
     }];
     
-     $scope.submit = function(){
-      $scope.items.push($scope.newData);
-      $scope.newDate = '';
+      $scope.addBook = function(bookData){
+          
+          $scope.items.push(bookData);
+          $scope.newData = {};
+          console.log(bookData);
+          
     };
         
        
         $scope.items = products; 
-        console.log($scope.items);
+        //console.log($scope.items);
+        //console.log($scope.newData);
     })
 
    
@@ -46,8 +52,14 @@ angular.module('bookstore',[])
         }
     });
 
+//forms display after buttons are clicked
 function myButton(){
     var iframe = $("#showButton");
     iframe.attr("src", iframe.data("src"));
     
 }
+
+//adjust iframe according to form contents
+$('iframe').load(function(){
+    $(this).height($(this).contents().outerHeight());
+});
