@@ -2,24 +2,28 @@
 <h1>Add a book</h1>
 <section>
     <form novalidate>
-        
         <div class="row input-container" >
-            <label for='book-name'>Book Name:</label><input type="text" name='book-name' ng-model="newData.bookName">
-        </div> <div class="row input-container" >
-            <label for='author'> Author: </label><input type="text" name='author' ng-model="newData.author">
-        </div> <div class="row input-container" >
-            <label for='ISBN'> ISBN code:</label><input type="text" name='ISBN' ng-model="newData.ISBN">
-        </div> <div class="row input-container" >
-            <label for='num-books'># of books:</label><input type="text" name='num-books' ng-model="newData.numBooks">
-        </div> <div class="row input-container" >
+            <label for='book-name'>Book Name:</label><input type="text" name='book-name' ng-model="newData.bookName" required>
+        </div> 
+        <div class="row input-container" >
+            <label for='author'> Author: </label><input type="text" name='author' ng-model="newData.author" required>
+        </div> 
+        <div class="row input-container" >
+            <label for='ISBN'> ISBN code:</label><input type="text" name='ISBN' ng-model="newData.ISBN" required>
+        </div> 
+        <div class="row input-container" >
+            <label for='num-books'># of books:</label><input type="number" name='num-books' ng-model="newData.numBooks" required>
+        </div> 
+        <div class="row input-container" >
             <label for='pub-date'>Publish Date:</label><input type="text" name='pub-date' ng-model="newData.pubDate">
-        </div> <div class="row input-container" >
+        </div> 
+        <div class="row input-container" >
             <label for='book-cat'> Book Category:</label><input type="text" name='book-cat' ng-model="newData.bookCat">
-        </div> <div class="row input-container" >
-            <label for='num-books-issued'># of Books Issued:</label><input type="text" name='num-books-issued' ng-model="numBooksIssued">
+        </div> 
+        <div class="row input-container" >
+            <label for='num-books-issued'># of Books Issued:</label><input type="number" name='num-books-issued' ng-model="newData.numBooksIssued" required>
         </div>
-        <input type='submit' class="btn btn-primary btn-sm" ng-click="addBook(newData)" ng-value="Submit"> 
+        <input type='submit' class="btn btn-primary btn-sm" ng-click="addSubmit(newData)" ng-value="Submit"> 
     </form>
-
 </section>
     

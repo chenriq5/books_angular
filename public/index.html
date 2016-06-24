@@ -43,7 +43,7 @@
     </nav>
         
     <!-- Page Content -->
-    <div class="container" ng-controller="tableController">
+    <div class="container">
         <div class="row-left">
             <div class="col-lg-12">
                 <h1>Books</h1>
@@ -59,8 +59,8 @@
                       <th># of Books Issued</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr ng-repeat = "novel in items">
+                  <tbody >
+                    <tr ng-repeat = "novel in items" ng-click="rowIndex($index)">
                       <div>
                           <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.bookName}}</td>
                           <td ng-class="{blue:hover}" ng-mouseenter= "hover= true" ng-mouseleave= "hover = false">{{novel.author}}</td>
@@ -75,17 +75,20 @@
                 </table>
                 
                 <!--buttons-->
-                <button type="button" class="btn btn-primary btn-sm" ng-click="isFormVisible = true"><span class="glyphicon glyphicon-plus"></span></button>
-                <button type="button" class="btn btn-primary btn-sm" onclick="window.open('addForm.html')"><span class="glyphicon glyphicon-pencil"></span></button>
-                <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-trash"></span></button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="add()"><span class="glyphicon glyphicon-plus"></span></button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="edit()"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="delete()"><span class="glyphicon glyphicon-trash"></span></button>
                  
             </div>
         </div>
         <div class="row-right" ng-show="isFormVisible">
             <div class="col-lg-12">
                     <div ng-include="'addForm.html'"></div>
-
-<!--                <iframe id="showButton" data-src='addForm.html'></iframe>-->
+            </div>    
+        </div>
+         <div class="row-right" ng-show="isEditVisible">
+            <div class="col-lg-12">
+                    <div ng-include="'editForm.html'"></div>
             </div>    
         </div>
     </div>
