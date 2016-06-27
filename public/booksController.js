@@ -1,6 +1,19 @@
-angular.module('bookstore',[])
-    .controller('booksController', function($scope){    
-   
+(function(){
+    console.log('controller loaded');
+    angular.module('bookstore')
+    .controller('booksController', ['$scope', 'BooksService', function ($scope, BooksService){ 
+     console.log('controller built');
+    
+        getBooks();
+  
+    function getBooks(){
+        
+       BooksService.getBooks().then(function(response){
+           console.log(response);
+       });
+   };
+        
+    $scope.rowSelected = [];
     var products =
     [{        
         bookName:'The Giver',
@@ -37,14 +50,16 @@ angular.module('bookstore',[])
           $scope.items.push(bookData);
           $scope.newData = {};
           $scope.isFormVisible= false; 
-          //console.log(bookData);
+          console.log(newData);
          
     };
     
     //getting selected row index
         $scope.rowIndex= function(index){
             $scope.selectIndex = index; 
-            //console.log($scope.selectIndex);
+            $scope.rowSelected= [];
+            $scope.rowSelected[index]= true;
+            
         };
 
     // edit button
@@ -71,6 +86,7 @@ angular.module('bookstore',[])
         
        $scope.current.numBooks = userInput;
        $scope.current = null;
+       $scope.newData= {};
        $scope.selectIndex = null;
        $scope.isEditVisible = false;
     };
@@ -89,6 +105,8 @@ angular.module('bookstore',[])
          $scope.isFormVisible= false;
     
     };
-       
-        
-    });
+    
+   
+         
+    }]);
+})();
