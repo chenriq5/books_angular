@@ -24,10 +24,11 @@
     </nav>
         
     <!-- Page Content -->
+    <!-- Books Details -->
     <div class="container">
         <div class="row-left">
             <div class="col-lg-12">
-                <h1>Books</h1>
+                <h1>Books Details</h1>
                 <table class="table table-hover" id="bookTable">
                   <thead>
                     <tr>
@@ -59,15 +60,56 @@
                 <button type="button" class="btn btn-primary btn-sm" ng-click="delete()"><span class="glyphicon glyphicon-trash"></span></button>
                  
             </div>
-        </div>
-        <div class="row-right" ng-show="isFormVisible">
+            <div class="row-left" ng-show="isFormVisible">
             <div class="col-lg-12">
                     <div ng-include="'addForm.html'"></div>
             </div>    
         </div>
-         <div class="row-right" ng-show="isEditVisible">
+         <div class="row-left" ng-show="isEditVisible">
             <div class="col-lg-12">
                     <div ng-include="'editForm.html'"></div>
             </div>    
         </div>
+        </div>
+        
+        
+        <!-- Books Transaction-->
+    <div class="container" ng-controller= "booksTransController">
+        <div class="row-right">
+         <h1>Books Transaction</h1>
+                <table class="table table-hover" id="bookTable">
+                  <thead>
+                    <tr>
+                      <th>Book ID</th>
+                      <th>Transaction Date</th>
+                      <th>Transaction Type</th>
+                      <th>Date(Issue/Return)</th>
+                    </tr>
+                  </thead>
+                  <tbody >
+                    <tr ng-repeat = "novel in items" ng-click="rowIndex($index)" ng-class="{'selected' : rowSelected[$index], '': !rowSelected[$index]}">                   
+                          <td>{{novel.bookName}}</td>
+                          <td>{{novel.author}}</td>
+                          <td>{{novel.ISBN}}</td>
+                          <td>{{novel.numBooks}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            
+             <!--buttons-->
+                <button type="button" class="btn btn-primary btn-sm" ng-click="add()"><span class="glyphicon glyphicon-plus"></span></button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="edit()"><span class="glyphicon glyphicon-pencil"></span></button>
+                 
+        </div>
+        <div class="row-right" ng-show="isFormVisible">
+            <div class="col-lg-12">
+<!--                    <div ng-include="'addForm.html'"></div>-->
+            </div>    
+        </div>
+         <div class="row-right" ng-show="isEditVisible">
+            <div class="col-lg-12">
+<!--                    <div ng-include="'editForm.html'"></div>-->
+            </div>    
+        </div>
     </div>
+    
