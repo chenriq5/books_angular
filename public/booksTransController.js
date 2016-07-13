@@ -2,7 +2,7 @@
      angular.module('bookstore')
     .controller('booksTransController', ['$scope', 'BooksService', function ($scope, BooksService){
         
-    getBooks();
+    //getBooks();
         
     function getBooks(){
 

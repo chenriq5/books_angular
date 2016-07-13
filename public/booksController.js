@@ -1,7 +1,7 @@
 (function(){
     console.log('controller loaded');
     angular.module('bookstore')
-    .controller('booksController', ['$scope', 'BooksService', function ($scope, BooksService){ 
+    .controller('booksController', ['$scope','BooksService', function ($scope, BooksService){ 
      console.log('controller built');
     
         getBooks();
@@ -105,8 +105,7 @@
          $scope.isFormVisible= false;
     
     };
-    
-   
+
          
     }]);
 })();

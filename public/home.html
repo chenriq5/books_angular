@@ -87,7 +87,7 @@
                     </tr>
                   </thead>
                   <tbody >
-                    <tr ng-repeat = "novel in items" ng-click="rowIndex($index)" ng-class="{'selected' : rowSelected[$index], '': !rowSelected[$index]}">                   
+                    <tr ng-repeat = "novel in items">                   
                           <td>{{novel.bookName}}</td>
                           <td>{{novel.author}}</td>
                           <td>{{novel.ISBN}}</td>
@@ -97,8 +97,8 @@
                 </table>
             
              <!--buttons-->
-                <button type="button" class="btn btn-primary btn-sm" ng-click="add()"><span class="glyphicon glyphicon-plus"></span></button>
-                <button type="button" class="btn btn-primary btn-sm" ng-click="edit()"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
+                <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
                  
         </div>
         <div class="row-right" ng-show="isFormVisible">
