@@ -5,7 +5,8 @@
  */
 
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    padding-top: 70px;
+    /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
 }
 
 .navbar-fixed-top .nav {
@@ -18,62 +19,58 @@ body {
 
 @media(min-width:768px) {
     body {
-        padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+        padding-top: 100px;
+        /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
     }
-
     .navbar-fixed-top .navbar-brand {
         padding: 15px 0;
     }
 }
 
 @media(max-width:990px) {
-
-    .row-left, .row-right {
+    .row-left,
+    .row-right {
         width: 100% !important;
     }
 }
 
-@media only screen 
-  and (min-device-width: 0px) 
-  and (max-device-width: 1024px) 
-  and (-webkit-min-device-pixel-ratio: 1) {
-      
-       .row-left, .row-right {
+@media only screen and (min-device-width: 0px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+    .row-left,
+    .row-right {
         width: 100%;
         float: none;
     }
-      
-      
+}
 
-}
-.wrapper{
+.wrapper {
     padding: 35px;
-    
 }
+
 
 /* table*/
-.row-left{
+
+.row-left {
     float: left;
     width: 55%;
-    
 }
 
+
 /*forms*/
-.row-right{
+
+.row-right {
     float: right;
     width: 40%;
     height: 100%;
-    padding-left:15px;
+    padding-left: 15px;
 }
+
 
 /*hover effect*/
-#bookTable tbody tr:hover{
-    
+
+#bookTable tbody tr:hover {
     background-color: dodgerblue;
-    
 }
 
-.selected{
+.selected {
     background-color: orange;
 }
-

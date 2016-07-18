@@ -1,17 +1,14 @@
-(function(){
-    console.log('loading module')
-    angular.module('bookstore', ['ngRoute'])
-    
-    .config(function($routeProvider) {
-        console.log('config routes');
+(function () {
+    angular.module('bookstore', ['ngRoute']).config(function ($routeProvider) {
         $routeProvider
-
-            // route for the home page
+        // route for the home page
             .when('/', {
-                templateUrl : 'home.html',
-                controller  : 'booksController'
+            templateUrl: 'home.html'
+            , controller: 'booksController'
+        });
+            $routeProvider.when('/api/books', {
+             templateUrl: 'home.html'
+            , controller: 'booksController'
             });
-            
-         
     });
 })();
