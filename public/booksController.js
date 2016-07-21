@@ -1,8 +1,8 @@
 (function () {
-    angular.module('bookstore').controller('booksController', ['$scope', 'BooksService', function ($scope, BooksService) {
-
+    angular.module('bookstore')
+        .controller('booksController', ['$scope', 'BooksService', function ($scope, BooksService) {
+       
         $scope.rowSelected = [];
-        
         activate();
 
         function activate() {
@@ -28,14 +28,68 @@
             $scope.isFormVisible = true;
             $scope.isEditVisible = false;
         };
-        
-        //add submit button 
-         $scope.addSubmit = function addSubmit(bookData) {
-            $scope.items.push(bookData);
-            $scope.bookData = {};
-            $scope.isFormVisible = false;
+        //validate user input function
+        $scope.validate = function validate(data){
+            
+            if(data.bookName == null || data.bookName == "")
+                {
+                    alert("Please enter a book name!");
+                    return false;
+                }
+            if(data.author == null || data.author == "")
+                {
+                    alert("Please enter an author name!");
+                    return false;
+                }
+            if(data.ISBN == null || data.ISBN == "")
+                {
+                    alert("Please enter ISBN code!");
+                    return false;
+                }
+            if(data.numBooks == null || data.numBooks == "")
+                {
+                    alert("Please enter valid input!");
+                    return false;
+                    
+                }
+            if(data.pubDate == null || data.pubDate == "")
+                {
+                    alert("Please enter valid input!");
+                    return false;
+                }
+            if(data.bookCat == null || data.bookCat == "")
+                {
+                    alert("Please enter valid input!");
+                    return false;
+                }
+            if(data.numBooksIssued == null || data.numBooksIssued == "")
+                {
+                    alert("Please enter valid input!");
+                    return false;
+                }
+            else{
+                for(i=0; i< $scope.items.length; i++){
+               
+                    if($scope.items[i].ISBN == data.ISBN){
+                    alert("ISBN code already exist!");
+                    return false;
+                }
+                
+            };
+                return true;
+        };
         };
        
+        //add submit button 
+         $scope.addSubmit = function addSubmit(bookData) {
+           if($scope.validate(bookData) == true)
+           {
+            $scope.items.unshift(bookData);
+            $scope.bookData = {};
+            $scope.isFormVisible = false;
+           }
+             else return false;
+        };
         
         // edit button
         $scope.edit = function () {

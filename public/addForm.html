@@ -1,12 +1,12 @@
 <h1>Add a book</h1>
 <section>
-    <form action="/api/books" method="post" novalidate>
+    <form action="/api/books" method="post" onsubmit="return validate" novalidate >
         <div class="row input-container">
             <label for='book-name'>Book Name:</label>
-            <input type="text" name='bookName' ng-model="newData.bookName" required> </div>
+            <input type="text" name='bookName' ng-model="newData.bookName" ng-required = 'true'> </div>
         <div class="row input-container">
             <label for='author'> Author: </label>
-            <input type="text" name='author' ng-model="newData.author" required> </div>
+            <input type="text" name='author' ng-model="newData.author"> </div>
         <div class="row input-container">
             <label for='ISBN'> ISBN code:</label>
             <input type="number" name='ISBN' ng-model="newData.ISBN" required> </div>
@@ -22,5 +22,5 @@
         <div class="row input-container">
             <label for='num-books-issued'># of Books Issued:</label>
             <input type="number" name='numBooksIssued' ng-model="newData.numBooksIssued" required> </div>
-        <input type='submit' class="btn btn-primary btn-sm" ng-click="addSubmit(newData)" ng-value="Submit"> </form>
+        <input type="submit" class="btn btn-primary btn-sm" ng-click="addSubmit(newData)" ng-value="Submit"> </form>
 </section>

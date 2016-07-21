@@ -38,7 +38,7 @@ app.get('/api/books', function (req, res) {
     bookItem.find(function (err, Book) {
         if (err) res.send(err)
         res.send(Book);
-        console.log(Book);
+        //console.log(Book);
     });
 });
 // create a book and send back all books after creation
@@ -56,7 +56,7 @@ app.post('/api/books', function (req, res) {
         // get and return all the books after you create another
         bookItem.find(function (err, Book) {
             if (err) res.send(err)
-            res.render(Book);
+            //res.send(Book);
             //console.log(Book);
         });
     });

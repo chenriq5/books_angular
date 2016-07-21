@@ -6,9 +6,6 @@
             templateUrl: 'home.html'
             , controller: 'booksController'
         });
-            $routeProvider.when('/api/books', {
-             templateUrl: 'home.html'
-            , controller: 'booksController'
-            });
+
     });
 })();
