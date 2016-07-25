@@ -3,6 +3,7 @@
         .controller('booksController', ['$scope', 'BooksService', function ($scope, BooksService) {
        
         $scope.rowSelected = [];
+        //function to automatically populate the table 
         activate();
 
         function activate() {
@@ -11,11 +12,25 @@
 
         function getBooks() {
             BooksService.getBooks().then(function (response) {
-                $scope.items = response.data;
+                $scope.books = response.data;
             });
+       
         };
         
-         
+        function insertBook(book){
+            
+             BooksService.addBook(book).then(function successCallback(response){
+                   
+                   if(response) {
+                       
+                       $scope.books = response.data;
+                   } 
+             }, function errorCallback(response) {
+                       return false;
+                   });
+            
+            
+        };
         //getting selected row index
         $scope.rowIndex = function (index) {
             $scope.selectIndex = index;
@@ -28,6 +43,10 @@
             $scope.isFormVisible = true;
             $scope.isEditVisible = false;
         };
+       /* $scope.toggleButtons = function (){
+            $scope.isFormVisible != $scope.isFormVisible;
+            $scope.isEditVisible != $scope.isEditVisible;
+        };*/
         //validate user input function
         $scope.validate = function validate(data){
             
@@ -68,9 +87,9 @@
                     return false;
                 }
             else{
-                for(i=0; i< $scope.items.length; i++){
+                for(i=0; i< $scope.books.length; i++){
                
-                    if($scope.items[i].ISBN == data.ISBN){
+                    if($scope.books[i].ISBN == data.ISBN){
                     alert("ISBN code already exist!");
                     return false;
                 }
@@ -81,27 +100,28 @@
         };
        
         //add submit button 
-         $scope.addSubmit = function addSubmit(bookData) {
-           if($scope.validate(bookData) == true)
-           {
-            $scope.items.unshift(bookData);
-            $scope.bookData = {};
-            $scope.isFormVisible = false;
-           }
-             else return false;
-        };
-        
+         $scope.addBook = function addBook(book) {
+             
+           if($scope.validate(book) == true){
+             insertBook(book);
+             $scope.books.unshift(book);
+             $scope.isFormVisible = false;
+                       
+            }else return false;
+             
+         };
         // edit button
         $scope.edit = function () {
             var selectedIndex = $scope.selectIndex;
             if (selectedIndex == null || selectedIndex == undefined) {
                 alert('Please Select a Row!');
                 return;
-            }
-            var obj = $scope.items[selectedIndex];
-            $scope.isEditVisible = true;
-            $scope.isFormVisible = false;
-            $scope.current = obj;
+            };
+            var obj = $scope.books[selectedIndex];
+           
+           $scope.isEditVisible = true;
+           $scope.isFormVisible = false;
+           $scope.current = obj;
         };
         
         //edit submit button
@@ -115,14 +135,16 @@
         
         //delete button
         $scope.delete = function () {
-            var it = $scope.items;
+            var it = $scope.books;
             if (it[$scope.selectIndex].numBooksIssued == 0) {
                 it.splice($scope.selectIndex, 1);
+                alert('Number of Books Issued must be 0');
                 return;
             };
-            $scope.isEditVisible = false;
-            $scope.isFormVisible = false;
+            
+           $scope.isEditVisible = false;
+           $scope.isFormVisible = false;
         };
         
-    }]);
-})();
+        }]
+)})();

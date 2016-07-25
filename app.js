@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-//define model
+//schema for input fields
 var bookSchema = new Schema({
     bookName: String
     , author: String
@@ -29,16 +29,17 @@ var bookSchema = new Schema({
     collection: 'first'
 });
 
+//define model
 var bookItem = mongoose.model('bookItem', bookSchema);
 
 module.exports = bookItem;
 //routes
 //get all books
 app.get('/api/books', function (req, res) {
-    bookItem.find(function (err, Book) {
+    bookItem.find(function (err, book) {
         if (err) res.send(err)
-        res.send(Book);
-        //console.log(Book);
+        res.send(book);
+        //console.log(book);
     });
 });
 // create a book and send back all books after creation
@@ -53,27 +54,30 @@ app.post('/api/books', function (req, res) {
         , numBooksIssued: req.body.numBooksIssued
     , }, function (err, Book) {
         if (err) res.send(err);
+        if(book == null || book == "") {res.send(err);}
+        else{
         // get and return all the books after you create another
-        bookItem.find(function (err, Book) {
+        bookItem.find(function (err, book) {
             if (err) res.send(err)
-            //res.send(Book);
-            //console.log(Book);
+            res.send(book);
+            //console.log(book);
         });
+        };
     });
 });
 /* // delete a todo
- app.delete('/api/books/:Book_id', function(req, res) {
+ app.delete('/api/books/:book_id', function(req, res) {
      book.remove({
-         _id : req.params.Book_id
-     }, function(err, Book) {
+         _id : req.params.book_id
+     }, function(err, book) {
          if (err)
              res.send(err);
 
          // get and return all the todos after you create another
-         book.find(function(err, Book) {
+         book.find(function(err, book) {
              if (err)
                  res.send(err)
-             res.json(Book);
+             res.json(book);
          });
      });
  });*/

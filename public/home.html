@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="novel in items" ng-click="rowIndex($index)" ng-class="{'selected' : rowSelected[$index], '': !rowSelected[$index]}">
+                    <tr ng-repeat="novel in books" ng-click="rowIndex($index)" ng-class="{'selected' : rowSelected[$index], '': !rowSelected[$index]}">
                         <td>{{novel.bookName}}</td>
                         <td>{{novel.author}}</td>
                         <td>{{novel.ISBN}}</td>
